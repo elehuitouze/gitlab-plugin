@@ -104,6 +104,10 @@ public class MergeRequestObjectAttributes {
 
     public void setTitle(String title) {
         this.title = title;
+
+        if (this.title != null && (this.title.startsWith("[WIP]") || this.title.startsWith("WIP:"))) {
+            this.workInProgress = true;
+        }
     }
 
     public Date getCreatedAt() {
@@ -192,6 +196,10 @@ public class MergeRequestObjectAttributes {
 
     public void setWorkInProgress(Boolean workInProgress) {
         this.workInProgress = workInProgress;
+
+        if (this.title != null && (this.title.startsWith("[WIP]") || this.title.startsWith("WIP:"))) {
+            this.workInProgress = true;
+        }
     }
 
     @Override

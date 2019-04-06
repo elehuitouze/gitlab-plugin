@@ -111,6 +111,7 @@ public class ActionResolver {
                 return new MergeRequestBuildAction(project, getRequestBody(request));
             case "Push Hook":
             case "Tag Push Hook":
+            case "Service Hook":
                 return new PushBuildAction(project, getRequestBody(request));
             case "Note Hook":
                     return new NoteBuildAction(project, getRequestBody(request));

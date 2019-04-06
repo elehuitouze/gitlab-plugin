@@ -57,7 +57,7 @@ import static com.dabsquared.gitlabjenkins.trigger.handler.push.PushHookTriggerH
  * @author Daniel Brooks
  */
 public class GitLabPushTrigger extends Trigger<Job<?, ?>> {
-	private boolean triggerOnPush = true;
+	private boolean triggerOnPush = false;
     private boolean triggerOnMergeRequest = true;
     private final TriggerOpenMergeRequest triggerOpenMergeRequestOnPush;
     private boolean triggerOnNoteRequest = true;

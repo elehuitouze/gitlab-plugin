@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url 'http://repo.jenkins-ci.org/releases/'
+        }
+    }
+    dependencies {
+        classpath 'org.jenkins-ci.tools:gradle-jpi-plugin:0.18.1'
+    }
+}
+
+apply plugin: 'org.jenkins-ci.jpi'
+apply plugin: 'eclipse'
+
+group = "org.jenkins-ci.plugins"
+version = "1.2.7-tactfactory"
+description = "A description of your plugin"
+
+jenkinsPlugin {
+    coreVersion = '2.60.3'                                               // Version of Jenkins core this plugin depends on.
+    displayName = 'GitLab Plugin'                			// Human-readable name of plugin.
+    url = 'https://wiki.jenkins-ci.org/display/JENKINS/GitLab+Plugin'   // URL for plugin on Jenkins wiki or elsewhere.
+    gitHubUrl = 'https://github.com/jenkinsci/gitlab-plugin'              // Plugin URL on GitHub. Optional.
+    shortName = 'gitlab-plugin'                                           // Plugin ID, defaults to the project name without trailing '-plugin'.
+
+    // The developers section is optional, and corresponds to the POM developers section.
+    developers {
+        developer {
+            id 'bass_rock'
+            name 'Daniel Brooks'
+            email 'daniel_brooks@dabsquared.com'
+        }
+    }
+
+    dependencies {
+        jenkinsPlugins 'org.jenkins-ci.plugins:git:2.4.1@jar'
+        jenkinsPlugins 'org.jenkins-ci.plugins:git-client:1.19.0@jar'
+        jenkinsPlugins 'org.jenkins-ci.plugins:scm-api:1.2@jar'
+        compile 'org.eclipse.jgit:org.eclipse.jgit:3.5.2.201411120430-r'
+        compile 'com.google.code.gson:gson:2.2.4'
+        compile 'org.gitlab:java-gitlab-api:1.1.11'
+        compile 'net.karneim:pojobuilder:3.4.0'
+        compile 'org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.0.Final'
+        compile 'org.jboss.resteasy:resteasy-client:3.0.16.Final'
+        jenkinsPlugins 'org.jenkins-ci.plugins:credentials:2.1.0@jar'
+        jenkinsPlugins 'org.jenkins-ci.plugins:plain-credentials:1.1@jar'
+        jenkinsPlugins 'org.jenkins-ci.plugins.workflow:workflow-step-api:1.15@jar'
+        compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.6.5'
+        compile 'com.fasterxml.jackson.core:jackson-databind:2.6.5'
+        compile 'com.google.guava:guava:18.0'
+        testCompile 'junit:junit:4.11'
+        testCompile 'org.mockito:mockito-all:1.9.5'
+    }
+}

@@ -79,6 +79,10 @@ public class MergeRequest {
 
     public void setTitle(String title) {
         this.title = title;
+
+        if (title != null && (title.startsWith("[WIP]") || title.startsWith("WIP:"))) {
+            this.setWorkInProgress(true);
+        }
     }
 
     public State getState() {
@@ -159,6 +163,10 @@ public class MergeRequest {
 
     public void setWorkInProgress(Boolean workInProgress) {
         this.workInProgress = workInProgress;
+
+        if (this.title != null && (this.title.startsWith("[WIP]") || this.title.startsWith("WIP:"))) {
+            this.workInProgress = true;
+        }
     }
 
     public Boolean getMergeWhenBuildSucceeds() {
